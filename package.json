@@ -4,7 +4,7 @@
   "title": "spotify-add-to-playlist",
   "preferences": [
     {
-      "name": "spotify-client-id",
+      "name": "spotifyClientId",
       "title": "Spotify ClientId",
       "required": true,
       "type": "textfield",
