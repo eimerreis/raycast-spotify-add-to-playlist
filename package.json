@@ -1,0 +1,56 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "spotify-add-to-playlist",
+  "title": "spotify-add-to-playlist",
+  "preferences": [
+    {
+      "name": "spotify-client-id",
+      "title": "Spotify ClientId",
+      "required": true,
+      "type": "textfield",
+      "description": "ClientId to access your spotify Account",
+      "default": "78f14bd06bcc43668e12a1c9246e3c72"
+    }
+  ],
+  "description": "Add the current track to any of your playlists",
+  "icon": "icon.png",
+  "author": "eimerreis",
+  "categories": [
+    "Applications",
+    "Media"
+  ],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "index",
+      "title": "Add to Playlist",
+      "subtitle": "Spotify",
+      "description": "Add the current track to one of your playlists",
+      "mode": "view"
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.34.1",
+    "@types/spotify-web-api-node": "^5.0.7",
+    "fuse.js": "^6.6.2",
+    "node-fetch": "^3.0.0",
+    "run-applescript": "^6.0.0",
+    "spotify-web-api-node": "^5.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "~16.10.0",
+    "@types/react": "^17.0.28",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "prettier": "^2.5.1",
+    "typescript": "^4.4.3"
+  },
+  "scripts": {
+    "build": "ray build -e dist",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint"
+  }
+}
