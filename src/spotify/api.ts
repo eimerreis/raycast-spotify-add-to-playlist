@@ -4,7 +4,7 @@ import SpotifyWebApi from "spotify-web-api-node";
 import { ExtensionPreferenceValues } from "../PreferenceValues";
 import { RefreshTokenExpiredError } from "./errors";
 
-const clientId = getPreferenceValues<ExtensionPreferenceValues>().spotfiyClientId;
+const clientId = getPreferenceValues<ExtensionPreferenceValues>().spotifyClientId;
 
 const client = new OAuth.PKCEClient({
   redirectMethod: OAuth.RedirectMethod.Web,
@@ -81,8 +81,10 @@ async function refreshTokens(refreshToken: string): Promise<OAuth.TokenResponse>
       "Content-Type": "application/x-www-form-urlencoded",
     },
   });
+
   if (!response.ok) {
     const { error } = JSON.parse(await response.text());
+
     if (error.toLowerCase() === "invalid_grant") {
       throw new RefreshTokenExpiredError();
     } else {

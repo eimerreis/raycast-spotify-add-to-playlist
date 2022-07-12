@@ -1,3 +1,3 @@
 export type ExtensionPreferenceValues = {
-    spotfiyClientId: string;
+    spotifyClientId: string;
 }
