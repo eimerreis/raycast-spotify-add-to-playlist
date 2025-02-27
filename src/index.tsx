@@ -1,9 +1,10 @@
 import { ActionPanel, Action, List, showToast, Toast, Image, closeMainWindow, showHUD, popToRoot } from "@raycast/api";
 import { useSearch } from "./useSearch";
-import { AddTrackToList } from "./spotify/api";
+import { AddTrackToList } from "./spotify/add-track-to-playlist";
 import { useCurrentTrack } from "./useCurrentTrack";
+import { withSpotifyClient } from "./spotify/api";
 
-export default function Command() {
+function Command() {
   const { search, items, isLoading } = useSearch();
   const { track } = useCurrentTrack();
 
@@ -16,11 +17,13 @@ export default function Command() {
       throttle
     >
       <List.Section title="Playlists" subtitle={`Current Track is: "${track?.item && track.item.name}"`}>
-        {track && items.map((item) => <SearchListItem key={item.name} searchResult={item} currentTrack={track} />)}
+        {track && items.map((item) => <SearchListItem key={item.id} searchResult={item} currentTrack={track} />)}
       </List.Section>
     </List>
   );
 }
+
+export default withSpotifyClient(Command);
 
 function SearchListItem({
   searchResult,

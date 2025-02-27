@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { authorize, GetCurrentTrack } from "./spotify/api";
+import { GetCurrentTrack } from "./spotify/get-current-track";
 
 
 export const useCurrentTrack = () => {
@@ -8,7 +8,6 @@ export const useCurrentTrack = () => {
 
   useEffect(() => {
     (async () => {
-      await authorize();
       const track = await GetCurrentTrack();
       setTrack(track);
       setIsLoading(false);
